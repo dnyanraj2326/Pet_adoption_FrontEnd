@@ -25,9 +25,10 @@ const item =[
   },
 ]
 
-const PetsSliderCard = ({item}) => {
+const PetsSliderCard = () => {
   return (
     <View style={styles.container}>
+      {/* <ScrollView horizontal style={{flex:1}}> */}
       <View style={styles.petsCard}>
       <TouchableOpacity activeOpacity={0.5} style={styles.btnNotification}>
        <Image
@@ -36,6 +37,7 @@ const PetsSliderCard = ({item}) => {
           />
        </TouchableOpacity>
       </View>
+      {/* </ScrollView> */}
     </View>
   )
 }
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
         
     },
     container:{
-        marginTop:moderateScale(30) 
+        marginTop:moderateScale(20),
     },
     
     

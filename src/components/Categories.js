@@ -19,7 +19,7 @@ const Categories = () => {
           </View>
           <Text style={styles.petsName}>Dog</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('CatScreen')}>
           <View style={styles.imgStyle}>
             <Image
               source={require('../assets/images/cat.png')}
@@ -28,7 +28,7 @@ const Categories = () => {
           </View>
           <Text style={styles.petsName}>Cat</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('CowScreen')}>
           <View style={styles.imgStyle}>
             <Image
               source={require('../assets/images/cow.png')}
@@ -37,7 +37,7 @@ const Categories = () => {
           </View>
           <Text style={styles.petsName}>Cow</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('FishScreen')}>
           <View style={styles.imgStyle}>
             <Image
               source={require('../assets/images/fish.png')}

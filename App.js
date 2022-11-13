@@ -8,7 +8,7 @@ import AppNavigation from './src/navigation/AppNavigation'
 const App = () => {
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={Colors.white} barStyle="dark-content"/>
+      <StatusBar backgroundColor={Colors.bg} barStyle="dark-content"/>
       <NavigationContainer>
           <AppNavigation />
       </NavigationContainer>

@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
   homeHeaderSection:{
     flexDirection:'row',
     alignItems:'center',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    paddingBottom:moderateScale(10)
   },
   middleSection:{
     paddingLeft:moderateScale(20)
