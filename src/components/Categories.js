@@ -2,13 +2,15 @@ import {StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react
 import React from 'react';
 import {moderateScale, scale} from 'react-native-size-matters';
 import Colors from '../constant/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const Categories = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.categoriesSection}>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity onPress={() => navigation.navigate('DogScreen')} style={styles.card}>
           <View style={styles.imgStyle}>
             <Image
               source={require('../assets/images/dog.png')}
