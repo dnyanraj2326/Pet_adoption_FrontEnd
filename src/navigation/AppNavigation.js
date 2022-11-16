@@ -18,6 +18,8 @@ import Colors from '../constant/Colors';
 import CatScreen from '../screens/CatScreen';
 import CowScreen from '../screens/CowScreen';
 import FishScreen from '../screens/FishScreen';
+import SplashScreen from '../screens/SplashScreen';
+import DetailsScreen from '../screens/DetailsScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -106,12 +108,14 @@ const AppNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
+      {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="BottomNav" component={BottomNav} />
       <Stack.Screen name="DogScreen" component={DogScreen} />
       <Stack.Screen name="CatScreen" component={CatScreen} />
       <Stack.Screen name="CowScreen" component={CowScreen} />
       <Stack.Screen name="FishScreen" component={FishScreen} />
+      <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
     </Stack.Navigator>
   );
 };

@@ -69,7 +69,13 @@ const HomeCard = () => {
        
       {
         NewPets?.map((item,ind) => (
-            <TouchableOpacity key={ind} activeOpacity={0.8} style={styles.cardSection}>
+            <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen",{
+                petUrl:item.petUrl,
+                petName:item.petName,
+                petAge:item.age,
+                gender:item.gender,
+                distance:item.distance
+            })} key={ind} activeOpacity={0.8} style={styles.cardSection}>
         <View style={styles.imgContainer}>
         <Image source={{uri:item.petUrl}} style={styles.petsImg} />
         </View>

@@ -10,23 +10,6 @@ const DogScreen = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.petsSection}> 
     <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
-    <PetsCard />
     </View>
     </ScrollView>
     </View>
@@ -42,8 +25,8 @@ const styles = StyleSheet.create({
     },
     petsSection:{
         paddingHorizontal:moderateScale(15),
-        flexDirection:'row',
-        flexWrap:'wrap',
-        justifyContent:'space-between'
+        // flexDirection:'row',
+        // flexWrap:'wrap',
+        // justifyContent:'space-between'
     }
 })

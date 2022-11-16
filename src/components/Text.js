@@ -1,11 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View ,Image,FlatList} from 'react-native'
 import React from 'react'
 import { moderateScale, scale } from 'react-native-size-matters'
 import Colors from '../constant/Colors'
 import * as Animatable from 'react-native-animatable';
-import { useNavigation } from '@react-navigation/native';
-
-
 
 const NewPets = [
     {
@@ -50,7 +47,7 @@ const NewPets = [
       petUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw1t7CJQtL1acpPI9wysgK7NwnRsx_2mYWug&usqp=CAU",
     },
     {
-      id: 6,
+      id: 100,
       petName: "Baber",
       age: "1.6 years old",
       distance: "8.8",
@@ -179,36 +176,43 @@ const NewPets = [
     },
   ];
 const PetsCard = () => {
-  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-        {
-            NewPets.map((item,ind) => (      
-     <Animatable.View 
-     animation={'fadeInDown'}
+    <View
+     style={styles.container}>
+      <FlatList
+        data={NewPets}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.list}
+        // numColumns={2}
+        renderItem={({ item,index }) => (
+        <Animatable.View 
+        animation={'fadeInDown'}
         duration={1000}
-        delay={ind*300}
-      key={ind} style={styles.petsCardSection}>
-        <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen")} activeOpacity={0.5}>
-            <View style={styles.imgSection}>
-            <Image source={{uri:item.petUrl}} style={styles.img} />
-            </View>
-            <View style={styles.textContent}>
-                <View style={styles.nameWithGender}>
-                    <Text style={styles.petName}>{item.petName}</Text>
-                    <Image source={item.gender == "Male" ? require("../assets/icon/maleIcon.png"): require("../assets/icon/femaleIcon.png")} style={styles.genderIcon} />
-                </View>
-                <Text style={styles.age}>{item.age}</Text>
-                <View style={styles.distance}>
-                    <Image source={require("../assets/icon/locatinIcon.png")} style={styles.locationIcon} />
-                    <Text style={styles.locationName}>Distance :</Text>
-                    <Text style={styles.locationValue}> {item.distance} km</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
-     </Animatable.View>
-       ))
-    }
+        delay={index*300}
+        style={styles.petsCardSection}>
+          <TouchableOpacity activeOpacity={0.5}>
+              <View style={styles.imgSection}>
+              <Image source={{uri:item.petUrl}} style={styles.img} />
+              </View>
+              <View style={styles.textContent}>
+                  <View style={styles.nameWithGender}>
+                      <Text style={styles.petName}>{item.petName}</Text>
+                      <Image source={item.gender == "Male" ? require("../assets/icon/maleIcon.png"): require("../assets/icon/femaleIcon.png")} style={styles.genderIcon} />
+                  </View>
+                  <Text style={styles.age}>{item.age}</Text>
+                  <View style={styles.distance}>
+                      <Image source={require("../assets/icon/locatinIcon.png")} style={styles.locationIcon} />
+                      <Text style={styles.locationName}>Distance :</Text>
+                      <Text style={styles.locationValue}> {item.distance} km</Text>
+                  </View>
+              </View>
+          </TouchableOpacity>
+       </Animatable.View>
+        )}
+        numColumns={2}
+        keyExtractor={item => item.id}
+      />
+       
     </View>
   )
 }
@@ -229,6 +233,9 @@ const styles = StyleSheet.create({
         tintColor:Colors.primary
        
     },
+    imgSection:{
+
+    },
     img:{
         width:"100%",
         height:130,
@@ -241,12 +248,14 @@ const styles = StyleSheet.create({
         justifyContent:'space-between'
     },
     petsCardSection:{
-        width:170,
+        flex:1,
         backgroundColor:Colors.white,
         borderRadius:18,
         elevation:3,
         shadowColor:Colors.para,
         marginBottom:moderateScale(10),
+        marginHorizontal:5
+        
     },
     petName:{
         fontSize:scale(18),
@@ -264,10 +273,12 @@ const styles = StyleSheet.create({
         marginTop:moderateScale(10)
     },
     container:{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        flexWrap:'wrap',
-         marginTop:moderateScale(15)
+        // flexDirection:'row',
+        // justifyContent:'space-between',
+        // flexWrap:'wrap',
+        flex:1,
+         marginTop:moderateScale(15),
+         width:'100%'
     },
     textContent:{
         padding:10,
@@ -282,6 +293,13 @@ const styles = StyleSheet.create({
         fontFamily:'Poppins-SemiBold',
         color:Colors.primary,
         alignItems:'center'
+    },
+    list: {
+      // flex: 1,
+      flexDirection: 'column',
+      // margin:2
+      // justifyContent:'space-between',
+      // flexWrap: 'wrap',
     }
     
 })
