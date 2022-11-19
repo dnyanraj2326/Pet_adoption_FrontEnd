@@ -1,9 +1,23 @@
-import { StyleSheet, Text, View,TouchableOpacity,Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity,Image, ScrollView,Linking } from 'react-native'
 import React from 'react'
 import Colors from '../constant/Colors'
 import { moderateScale, scale } from 'react-native-size-matters'
 
 const ContaintDetails = ({distance,petAge,petName,gender}) => {
+
+    const handleWhatappChat = () => {
+        let url = "whatsapp://send?text=" +
+          "We look forward to assisting you! ..." +
+          "&phone=91" +
+          7261916370;
+        Linking.openURL(url)
+          .then(data => {
+            console.log("WhatsApp Opened successfully " + data);  //<---Success
+          })
+          .catch(() => {
+            alert("Make sure WhatsApp installed on your device");  //<---Error
+          });
+    }
   return (
     <View style={styles.containtDetails}>
      <View style={styles.infoPets}>
@@ -52,13 +66,13 @@ const ContaintDetails = ({distance,petAge,petName,gender}) => {
         </View>
         </View>
         <View style={styles.comunication}>
-        <TouchableOpacity style={styles.phoneSection}>
+        <TouchableOpacity style={styles.phoneSection} onPress={() => Linking.openURL(`tel:9921899358`)}>
         <Image
             source={require('../assets/icon/Phone.png')}
             style={styles.phoneIcon}
           />
         </TouchableOpacity>
-          <TouchableOpacity style={styles.msgSection}>
+          <TouchableOpacity style={styles.msgSection} onPress={() =>handleWhatappChat()}>
           <Image
             source={require('../assets/icon/whatappIcon.png')}
             style={styles.msgIcon}
