@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,ScrollView } from 'react-native'
 import React from 'react'
 import { moderateScale } from 'react-native-size-matters'
 import Colors from '../constant/Colors'
@@ -7,9 +7,11 @@ import PetsCard from '../components/PetsCard'
 const CowScreen = () => {
   return (
     <View style={styles.container}>
-    <View style={styles.petsSection}>
-      <PetsCard />
-  </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.petsSection}>
+        <PetsCard />
+    </View>
+      </ScrollView>
   </View>
   )
 }

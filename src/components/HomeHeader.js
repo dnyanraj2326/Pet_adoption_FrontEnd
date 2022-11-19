@@ -2,17 +2,21 @@ import {StyleSheet, Text, View,Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {moderateScale,scale} from 'react-native-size-matters'
 import Colors from '../constant/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 
 const HomeHeader = () => {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.homeHeaderSection}>
         <View style={styles.leftSection}>
-          <Image
+         <TouchableOpacity activeOpacity={0.6} onPress={() => navigation.navigate("ProfileScreen")}>
+         <Image
             source={require('../assets/images/profile.jpg')}
             style={styles.profileimg}
           />
+         </TouchableOpacity>
           <View style={styles.middleSection}>
             <View style={styles.iconWithText}>
               <Text style={styles.locationText}>Location</Text>
@@ -24,7 +28,7 @@ const HomeHeader = () => {
             <Text style={styles.locOutText}>Baner Rd, Pune</Text>
           </View>
         </View>
-       <TouchableOpacity activeOpacity={0.5} style={styles.btnNotification}>
+       <TouchableOpacity activeOpacity={0.5} style={styles.btnNotification} onPress={() => navigation.navigate("NotificationScreen")}>
        <Image
             source={require('../assets/icon/notification.png')}
             style={styles.notificationImg}

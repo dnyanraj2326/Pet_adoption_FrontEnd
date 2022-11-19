@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,StatusBar } from 'react-native'
 import React from 'react'
 import Colors from '../constant/Colors'
 import ImgDetails from '../components/ImgDetails'
@@ -9,6 +9,7 @@ const DetailsScreen = ({route}) => {
     const {petUrl, petName, petAge, gender, distance} = route.params;
   return (
     <View style={styles.container}>
+      <StatusBar translucent backgroundColor="transparent"/>
       <View>
         <ImgDetails petUrl={petUrl}/>
       </View>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         width:"100%",
         height:'100%',
-        marginTop:320,
+        marginTop:355,
         zIndex:2,
         // borderRadius:20
         // paddingHorizontal:moderateScale(15)

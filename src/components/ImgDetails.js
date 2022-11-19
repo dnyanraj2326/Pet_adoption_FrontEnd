@@ -37,7 +37,7 @@ export default ImgDetails;
 const styles = StyleSheet.create({
   mainImg: {
     width: '100%',
-    height: 350,
+    height: 380,
     resizeMode: 'cover',
   },
   imgSection: {},
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
     paddingHorizontal: moderateScale(10),
-    marginTop: moderateScale(10),
+    marginTop: moderateScale(50),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -20,6 +20,7 @@ import CowScreen from '../screens/CowScreen';
 import FishScreen from '../screens/FishScreen';
 import SplashScreen from '../screens/SplashScreen';
 import DetailsScreen from '../screens/DetailsScreen';
+import NotificationScreen from '../screens/NotificationScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -116,6 +117,7 @@ const AppNavigation = () => {
       <Stack.Screen name="CowScreen" component={CowScreen} />
       <Stack.Screen name="FishScreen" component={FishScreen} />
       <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+      <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
     </Stack.Navigator>
   );
 };
