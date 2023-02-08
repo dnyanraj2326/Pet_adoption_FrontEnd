@@ -13,9 +13,10 @@ const HomeScreen = () => {
       <View style={styles.homeSection}>
         <HomeHeader />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View>
+            <View>
+            <View style={{height:220, marginTop:moderateScale(20)}}>
             <PetsSliderCard />
-          </View>
+            </View>
           <Categories />
           <View>
             <Text style={styles.subTitle}>Recommended</Text>
@@ -30,6 +31,7 @@ const HomeScreen = () => {
               <HomeCard />
             </ScrollView>
           </View>
+            </View>
         </ScrollView>
       </View>
     </View>

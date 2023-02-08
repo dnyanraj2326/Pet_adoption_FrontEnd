@@ -80,6 +80,14 @@ const ContaintDetails = ({distance,petAge,petName,gender}) => {
           </TouchableOpacity>
         </View>
      </View>
+     <View>
+        <Text style={styles.aboutHed}>About</Text>
+        <Text style={styles.aboutPara}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+         when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </Text>
+     </View>
     </View>
   )
 }
@@ -101,7 +109,8 @@ const styles = StyleSheet.create({
     },
     containtDetails:{
         backgroundColor:Colors.white,
-        height:'100%',
+        flex:1,
+        // height:'100%',
         paddingHorizontal:moderateScale(15),
         borderRadius:30
 
@@ -207,5 +216,15 @@ marginLeft:moderateScale(15)
         backgroundColor:"#DEF5E5",
         borderRadius:15,
 
+    },
+    aboutHed:{
+        fontSize:scale(20),
+        fontFamily:"Montserrat-Bold",
+        color:Colors.black,
+    },
+    aboutPara:{
+        fontSize:13,
+        fontFamily:"Poppins-Regular",
+        color:Colors.para,
     }
 })

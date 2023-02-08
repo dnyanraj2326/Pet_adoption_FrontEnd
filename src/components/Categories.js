@@ -56,7 +56,8 @@ export default Categories;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: moderateScale(30),
+    marginBottom: moderateScale(30),
+    marginTop:moderateScale(15)
   },
   categoriesSection: {
     flexDirection: 'row',

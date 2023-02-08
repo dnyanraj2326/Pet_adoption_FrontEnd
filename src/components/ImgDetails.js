@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
     height: 380,
     resizeMode: 'cover',
   },
-  imgSection: {},
+  imgSection: {
+    // flex:1
+  },
   iconSection: {
     width: '100%',
     position: 'absolute',
