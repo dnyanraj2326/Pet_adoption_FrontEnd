@@ -189,13 +189,15 @@ const PetsCard = () => {
         duration={1000}
         delay={ind*300}
       key={ind} style={styles.petsCardSection}>
-        <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen",{
+        <TouchableOpacity 
+        onPress={() => navigation.navigate("DetailsScreen",{
            petUrl:item.petUrl,
            petName:item.petName,
            petAge:item.age,
            gender:item.gender,
            distance:item.distance
-        })} activeOpacity={0.5}>
+        })} 
+        activeOpacity={0.5}>
             <View style={styles.imgSection}>
             <Image source={{uri:item.petUrl}} style={styles.img} />
             </View>

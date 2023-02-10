@@ -21,6 +21,11 @@ import FishScreen from '../screens/FishScreen';
 import SplashScreen from '../screens/SplashScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
+import UserInformationForm from '../screens/UserInformationForm';
+import UserInfoPersonal from '../screens/UserInfoPersonal';
+import UserInfoDetail3 from '../screens/UserInfoDetail3';
+import SignupScreen from '../screens/SignupScreen';
+import PetImgGallery from '../screens/PetImgGallery';
 
 
 const Stack = createNativeStackNavigator();
@@ -111,6 +116,7 @@ const AppNavigation = () => {
       }}>
       {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="SignupScreen" component={SignupScreen} />
       <Stack.Screen name="BottomNav" component={BottomNav} />
       <Stack.Screen name="DogScreen" component={DogScreen} />
       <Stack.Screen name="CatScreen" component={CatScreen} />
@@ -118,6 +124,11 @@ const AppNavigation = () => {
       <Stack.Screen name="FishScreen" component={FishScreen} />
       <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
+      <Stack.Screen name="UserInformationForm" component={UserInformationForm} />
+      <Stack.Screen name="UserInfoPersonal" component={UserInfoPersonal} />
+      <Stack.Screen name="UserInfoDetail3" component={UserInfoDetail3} />
+      <Stack.Screen name="PetImgGallery" component={PetImgGallery} />
+
     </Stack.Navigator>
   );
 };

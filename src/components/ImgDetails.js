@@ -2,20 +2,24 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
 import Colors from '../constant/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const ImgDetails = ({petUrl}) => {
+  const navigation = useNavigation()
   return (
     <View style={styles.imgSection}>
-      <View>
+      <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate("PetImgGallery",{
+        petUrl:petUrl,
+      })}>
         <Image
           source={{
-            uri: petUrl,
+            uri: petUrl[0],
           }}
           style={styles.mainImg}
         />
-      </View>
+      </TouchableOpacity>
       <View style={styles.iconSection}>
-        <TouchableOpacity style={styles.leftICon}>
+        <TouchableOpacity style={styles.leftICon} onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/icon/BackIcon.png')}
             style={styles.backIcon}

@@ -4,22 +4,23 @@ import Colors from '../constant/Colors'
 import ImgDetails from '../components/ImgDetails'
 import ContaintDetails from '../components/ContaintDetails'
 import { moderateScale } from 'react-native-size-matters'
+import PetImagesSection from '../components/PetImagesSection'
 
 const DetailsScreen = ({route}) => {
     const {petUrl, petName, petAge, gender, distance} = route.params;
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent"/>
-      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1}}>
-      <View>
+      {/* <ScrollView showsVerticalScrollIndicator={false} style={{flex:1}}> */}
+      <View style={{flex:1}}>
       <View>
         <ImgDetails petUrl={petUrl}/>
       </View>
       <View style={styles.containt}>
-        <ContaintDetails petName={petName} petAge={petAge} gender={gender} distance={distance}/>
+        <ContaintDetails petName={petName} petAge={petAge} gender={gender} distance={distance} petUrl={petUrl}/>
       </View>
       </View>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   )
 }
