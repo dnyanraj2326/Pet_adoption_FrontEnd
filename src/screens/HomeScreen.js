@@ -1,13 +1,35 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React,{useEffect} from 'react';
 import Colors from '../constant/Colors';
 import {moderateScale, scale} from 'react-native-size-matters';
 import HomeHeader from '../components/HomeHeader';
 import PetsSliderCard from '../components/PetsSliderCard';
 import Categories from '../components/Categories';
 import HomeCard from '../components/HomeCard';
+import RecommendedPets from '../components/RecommendedPets';
+import Sheltors from '../components/Sheltors';
+import jwt_decode from 'jwt-decode'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
+  useEffect(() => {
+    authLink()
+  }, [])
+  
+  const authLink = async () => {
+    const token = await AsyncStorage.getItem("token")
+    const { exp } = jwt_decode(token)
+    const expirationTime = (exp * 1000) - 60000
+    if (Date.now() >= expirationTime) {
+      AsyncStorage.removeItem('userName');
+      AsyncStorage.removeItem('userEmail');
+      AsyncStorage.removeItem('userAddress');
+      AsyncStorage.removeItem('userPhone');
+      AsyncStorage.removeItem("token");
+      navigation.replace('Login');
+      alert("Your session has expired!.");
+        }
+  }
   return (
     <View style={styles.container}>
       <View style={styles.homeSection}>
@@ -21,14 +43,19 @@ const HomeScreen = () => {
           <View>
             <Text style={styles.subTitle}>Recommended</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              <HomeCard />
-              <HomeCard />
+              <RecommendedPets/>
             </ScrollView>
           </View>
           <View style={styles.newArrivalCard}>
             <Text style={styles.subTitle}>New Arrival</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <HomeCard />
+            </ScrollView>
+          </View>
+          <View style={styles.nearBySheltor}>
+            <Text style={styles.subTitle}>Near By Sheltors</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <Sheltors />
             </ScrollView>
           </View>
             </View>
@@ -59,7 +86,11 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
   newArrivalCard: {
+    marginTop: moderateScale(50),
+    paddingBottom: moderateScale(20),
+  },
+  nearBySheltor:{
     marginTop: moderateScale(30),
     paddingBottom: moderateScale(100),
-  },
+  }
 });

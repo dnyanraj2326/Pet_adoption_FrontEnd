@@ -4,6 +4,16 @@ import { moderateScale, scale } from 'react-native-size-matters'
 import Colors from '../constant/Colors'
 import * as Animatable from 'react-native-animatable';
 
+{/* <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',}}>
+      {
+        loading&&(
+          <View style={{flexDirection:"row",alignItems:'center',justifyContent:'center',paddingHorizontal:30,paddingVertical:15,backgroundColor:Colors.gray,borderRadius:10,zIndex:99}}>
+          <ActivityIndicator size="large" color="red" />
+          <Text style={{marginLeft:10,fontSize:20,fontFamily:"Poppins-Bold",marginTop:5}}>Please Wait...</Text>
+          </View>
+        )
+      }
+      </View> */}
 const NewPets = [
     {
       id: 1,

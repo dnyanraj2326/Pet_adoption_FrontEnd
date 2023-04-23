@@ -7,14 +7,37 @@ import {
   ScrollView,
   Linking,
 } from 'react-native';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Colors from '../constant/Colors';
 import {moderateScale, scale} from 'react-native-size-matters';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import PetImagesSection from './PetImagesSection';
+import PetsVideos from './PetsVideos';
+import {useDispatch, useSelector} from 'react-redux';
+import {addTOFevPets, removeTOFevPets} from '../redux/action';
+import HeartFill from '../assets/icon/FillHeart.png';
+import Heart from '../assets/icon/Heart.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ContaintDetails = ({distance, petAge, petName, gender,petUrl}) => {
-    const navigation = useNavigation()
+const ContaintDetails = ({
+  distance,
+  petAge,
+  petName,
+  gender,
+  petUrl,
+  ownDetails,
+  about,
+  breed,
+  address,
+  item,
+}) => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const [addFev, setAddFev] = useState(false);
+  const [isFevData, setIsFevData] = useState(false)
+
+const fevPetCartData = useSelector((state) => state.reducer)
+
   const handleWhatappChat = () => {
     let url =
       'whatsapp://send?text=' +
@@ -29,99 +52,138 @@ const ContaintDetails = ({distance, petAge, petName, gender,petUrl}) => {
         alert('Make sure WhatsApp installed on your device'); //<---Error
       });
   };
+
+  const saveFevPets = item => {
+    console.log('Added', item);
+    dispatch(addTOFevPets(item));
+  };
+
+  const removeFevPets = (item) => {
+    dispatch(removeTOFevPets(item))
+  }
+
+  useEffect(() => {
+    const result = fevPetCartData?.filter((elm) => elm.petName === item.petName);
+    if (result.length) {
+      setIsFevData(true)
+    }else(
+      setIsFevData(false)
+    )
+  }, [fevPetCartData])
+
+  
+  
   return (
     <View style={styles.containtDetails}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View  style={{paddingBottom:100}}>
-        <View style={styles.infoPets}>
-          <View style={styles.nameWithIcon}>
-            <Text style={styles.petsName}>{petName}</Text>
-            <TouchableOpacity style={styles.heartSection}>
+        <View style={{paddingBottom: 100}}>
+          <View style={styles.infoPets}>
+            <View style={styles.nameWithIcon}>
+              <Text style={styles.petsName}>{petName}</Text>
+              {
+                isFevData ?
+                <TouchableOpacity
+                style={styles.heartSection}
+                onPress={() => {
+                  removeFevPets(item.petName),
+                  setAddFev(false)
+                  }}>
+                <Image
+                  source={HeartFill}
+                  style={styles.heartIcon}
+                />
+              </TouchableOpacity>
+              :
+              <TouchableOpacity
+                style={styles.heartSection}
+                onPress={() => {
+                  saveFevPets(item),
+                  setAddFev(true)
+                  }}>
+                <Image
+                  source={Heart}
+                  style={styles.heartIcon}
+                />
+              </TouchableOpacity>
+              }
+            </View>
+            <View style={styles.addressWithIcon}>
               <Image
-                source={require('../assets/icon/FillHeart.png')}
-                style={styles.heartIcon}
+                source={require('../assets/icon/locatinIcon.png')}
+                style={styles.locationIcon}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.addressWithIcon}>
-            <Image
-              source={require('../assets/icon/locatinIcon.png')}
-              style={styles.locationIcon}
-            />
-            <Text style={styles.addressStyle}>
-              477 Washingtone Ave ({distance}km)
-            </Text>
-          </View>
-        </View>
-        <View style={styles.box}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={styles.singleBox}>
-              <Text style={styles.sex}>Sex</Text>
-              <Text style={styles.genderTextSty}>{gender}</Text>
-            </View>
-            <View style={styles.singleBox}>
-              <Text style={styles.sex}>Age</Text>
-              <Text style={styles.genderTextSty}>{petAge}</Text>
-            </View>
-            <View style={styles.singleBox}>
-              <Text style={styles.sex}>Breed</Text>
-              <Text style={styles.genderTextSty}>Persian</Text>
-            </View>
-          </ScrollView>
-        </View>
-        <View style={styles.ownerSection}>
-          <View style={styles.imgWithNames}>
-            <Image
-              source={require('../assets/images/profile.jpg')}
-              style={styles.ownerImg}
-            />
-            <View style={styles.ownerInfo}>
-              <Text style={styles.ownerNameText}>Omkar Kale</Text>
-              <Text style={styles.ownerNgoText}>Pets Ego Owner</Text>
+              <Text style={styles.addressStyle}>
+                {address} ({distance})
+              </Text>
             </View>
           </View>
-          <View style={styles.comunication}>
-            <TouchableOpacity
-              style={styles.phoneSection}
-              onPress={() => Linking.openURL(`tel:9921899358`)}>
+          <View style={styles.box}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.singleBox}>
+                <Text style={styles.sex}>Sex</Text>
+                <Text style={styles.genderTextSty}>{gender}</Text>
+              </View>
+              <View style={styles.singleBox}>
+                <Text style={styles.sex}>Age</Text>
+                <Text style={styles.genderTextSty}>{petAge}</Text>
+              </View>
+              <View style={styles.singleBox}>
+                <Text style={styles.sex}>Breed</Text>
+                <Text style={styles.genderTextSty}>{breed}</Text>
+              </View>
+            </ScrollView>
+          </View>
+          <View style={styles.ownerSection}>
+            <View style={styles.imgWithNames}>
               <Image
-                source={require('../assets/icon/Phone.png')}
-                style={styles.phoneIcon}
+                source={{uri: ownDetails?.ownImg}}
+                style={styles.ownerImg}
               />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.msgSection}
-              onPress={() => handleWhatappChat()}>
-              <Image
-                source={require('../assets/icon/whatappIcon.png')}
-                style={styles.msgIcon}
-              />
-            </TouchableOpacity>
+              <View style={styles.ownerInfo}>
+                <Text style={styles.ownerNameText}>{ownDetails?.ownName}</Text>
+                <Text style={styles.ownerNgoText}>
+                  {ownDetails?.ownNgoname}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.comunication}>
+              <TouchableOpacity
+                style={styles.phoneSection}
+                onPress={() => Linking.openURL(`tel:${ownDetails?.ownNum}`)}>
+                <Image
+                  source={require('../assets/icon/Phone.png')}
+                  style={styles.phoneIcon}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.msgSection}
+                onPress={() => handleWhatappChat()}>
+                <Image
+                  source={require('../assets/icon/whatappIcon.png')}
+                  style={styles.msgIcon}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View>
-          <Text style={styles.aboutHed}>About</Text>
-          <Text style={styles.aboutPara}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley of type and scrambled it to make a
-            type specimen book.
-          </Text>
-        </View>
-        <View style={{marginTop:20}}>
-        <Text style={styles.aboutHed}>Photo's & Video</Text>
-          <View style={{marginTop:moderateScale(20)}}>
-          <PetImagesSection petUrl={petUrl}/>
+          <View>
+            <Text style={styles.aboutHed}>About</Text>
+            <Text style={styles.aboutPara}>{about}</Text>
           </View>
-        </View>
+          <View style={{marginTop: 20}}>
+            <Text style={styles.aboutHed}>Photo's & Video</Text>
+            <View>
+              <PetImagesSection petUrl={petUrl} />
+            </View>
+            <View>
+              <PetsVideos />
+            </View>
+          </View>
         </View>
       </ScrollView>
       <View style={styles.adoptBtnSection}>
-        <TouchableOpacity style={styles.adoptBtnStyle} onPress={() => navigation.navigate("UserInformationForm")}>
+        <TouchableOpacity
+          style={styles.adoptBtnStyle}
+          onPress={() => navigation.navigate('UserInformationForm')}>
           <Text style={styles.adoptBtnTextSty}>Adopte Now</Text>
         </TouchableOpacity>
       </View>
@@ -133,8 +195,8 @@ export default ContaintDetails;
 
 const styles = StyleSheet.create({
   heartIcon: {
-    width: 22,
-    height: 22,
+    width: 30,
+    height: 30,
     tintColor: 'red',
   },
   locationIcon: {
@@ -151,7 +213,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(15),
     borderRadius: 30,
     position: 'relative',
-    paddingTop:moderateScale(4)
+    paddingTop: moderateScale(4),
   },
   petsName: {
     fontSize: scale(22),
@@ -161,8 +223,8 @@ const styles = StyleSheet.create({
   nameWithIcon: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal:moderateScale(10),
-    alignItems:"center"
+    marginHorizontal: moderateScale(10),
+    alignItems: 'center',
   },
   addressWithIcon: {
     flexDirection: 'row',
@@ -260,6 +322,7 @@ const styles = StyleSheet.create({
     fontSize: scale(20),
     fontFamily: 'Montserrat-Bold',
     color: Colors.black,
+    marginBottom: moderateScale(10),
   },
   aboutPara: {
     fontSize: 13,

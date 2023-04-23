@@ -5,13 +5,59 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
 import {moderateScale, scale} from 'react-native-size-matters';
 import TextInputField from '../components/TextInputField';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import Toast from 'react-native-toast-message';
 
-const UserInfoPersonal = () => {
+
+const UserInfoPersonal = ({route}) => {
+const {userName,mobileNo,emailId,birthDate,gender,petId} = route.params
     const navigation = useNavigation()
+    const [curAddress, setCurAddress] = useState('')
+    const [permentAddress, setPermentAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [professional, setProfessional] = useState('')
+    const [identity, setIdentity] = useState('')
+
+    console.log("first",userName,mobileNo,emailId,birthDate,gender)
+
+    const fieldReq = () => {
+      Toast.show({
+        type: 'info',
+        text1: 'All field required ! 👋',
+      });
+    };
+
+  const onSubmitData = async() => {
+    const data = {
+  "pet_id":petId,
+  "userName":userName,
+  "mobileNumber":mobileNo,
+  "email":emailId,
+  "gender":gender,
+  "dateOfBirth":birthDate,
+  "currentAddress":curAddress,
+  "permentAddress":permentAddress,
+  "city":city,
+  "state":state,
+  "professional":professional,
+  "identity":identity
+    }
+if(userName =='' && mobileNo == '' && emailId == '' && gender == '' && birthDate == '' && curAddress == '' && permentAddress == '' && city == '' && state == '' && professional == '' && identity == ''){
+  fieldReq();
+}else{
+ try {
+  const res = await axios.get("http://192.168.0.105:8080/users",data)
+  console.log("res",res)
+ } catch (error) {
+  console.log(error)
+ }
+}
+  }
   return (
     <View style={styles.container}>
       <View style={{marginTop: moderateScale(30)}}>
@@ -24,11 +70,15 @@ const UserInfoPersonal = () => {
             <TextInputField
               label="Current Address"
               placeholder="Enter your current address"
+              onChangeText={() => setCurAddress(Text)}
+              value={curAddress}
             />
             <TextInputField
               label="Perment Address"
               placeholder="Enter your Perment Address"
               keyboardType="number-pad"
+              onChangeText={() => setPermentAddress(Text)}
+              value={permentAddress}
             />
             <View
               style={{
@@ -37,14 +87,18 @@ const UserInfoPersonal = () => {
                 width: '100%',
               }}>
               <View style={{width: '48%'}}>
-                <TextInputField label="City" placeholder="City" />
+                <TextInputField label="City" placeholder="City" onChangeText={() => setCity(Text)}
+              value={city}/>
               </View>
               <View style={{width: '48%'}}>
-                <TextInputField label="State" placeholder="State" />
+                <TextInputField label="State" placeholder="State" onChangeText={() => setState(Text)}
+              value={state}/>
               </View>
             </View>
-            <TextInputField label="Professional" placeholder="Ex. Business " />
-            <TextInputField label="Identity" placeholder="Ex. Aadhar number " />
+            <TextInputField label="Professional" placeholder="Ex. Business " onChangeText={() => setProfessional(Text)}
+              value={professional}/>
+            <TextInputField label="Identity" placeholder="Ex. Aadhar number " onChangeText={() => setIdentity(Text)}
+              value={identity}/>
           </View>
         </ScrollView>
       </View>
@@ -57,8 +111,8 @@ const UserInfoPersonal = () => {
         <TouchableOpacity activeOpacity={0.7} style={styles.nextBtn} onPress={() => navigation.goBack()}>
           <Text style={styles.nextBtnStyle}>Back</Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={styles.nextBtn} onPress={() => navigation.navigate("UserInfoDetail3")}>
-          <Text style={styles.nextBtnStyle}>Next</Text>
+        <TouchableOpacity activeOpacity={0.7} style={styles.nextBtn} onPress={onSubmitData}>
+          <Text style={styles.nextBtnStyle}>Submit</Text>
         </TouchableOpacity>
       </View>
     </View>

@@ -10,6 +10,15 @@ const Categories = () => {
     <View style={styles.container}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.categoriesSection}>
+      <TouchableOpacity onPress={() => navigation.navigate('NgoSheltor')} style={styles.card}>
+          <View style={styles.imgStyle}>
+            <Image
+              source={require('../assets/images/ngo.png')}
+              style={styles.img}
+            />
+          </View>
+          <Text style={styles.petsName}>NGO</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('DogScreen')} style={styles.card}>
           <View style={styles.imgStyle}>
             <Image

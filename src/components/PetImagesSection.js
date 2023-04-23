@@ -23,16 +23,16 @@ const PetImagesSection = ({petUrl}) => {
         </View>
         <View style={{flexDirection:'row',justifyContent:"space-between",marginTop:10}}>
             <Image
-              source={{uri: petUrl[3]}}
+              source={{uri: petUrl[2]}}
               style={{width: 100, height:170,resizeMode:'cover',borderRadius:20}}
             />
             <View style={{flexDirection:'column',justifyContent:'space-between'}}>
             <Image
-              source={{uri: petUrl[8]}}
+              source={{uri: petUrl[3]}}
               style={{width:250, height:80,resizeMode:'cover',borderRadius:20}}
             />
             <Image
-              source={{uri: petUrl[9]}}
+              source={{uri: petUrl[4]}}
               style={{width:250, height:80,resizeMode:'cover',borderRadius:20}}
             />
             </View>

@@ -6,14 +6,44 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Colors from '../constant/Colors';
 import {moderateScale, scale} from 'react-native-size-matters';
 import TextInputField from '../components/TextInputField';
 import {useNavigation} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 const UserInformationForm = () => {
   const navigation = useNavigation();
+  const [userName, setUserName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [emailId, setEmailId] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [gender, setGender] = useState("");
+  let petId="fghgjhuhibhhyihb9876"
+
+  const fieldReq = () => {
+    Toast.show({
+      type: 'info',
+      text1: 'All field required ! 👋',
+    });
+  };
+
+  const submitData = () => {
+    if(userName == "" && mobileNo == "" && emailId == "" && gender == "" && birthDate == ""){
+        fieldReq();
+    }else{
+    navigation.navigate('UserInfoPersonal', {
+      userName: userName,
+      mobileNo: mobileNo,
+      emailId: emailId,
+      birthDate: birthDate,
+      gender: gender,
+      petId:petId
+    });
+  }
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -33,13 +63,20 @@ const UserInformationForm = () => {
             <TextInputField
               label="User Name"
               placeholder="Enter your full name"
+              onChangeText={text => setUserName(text)}
             />
             <TextInputField
               label="Mobile Number"
               placeholder="Enter your mobie No"
               keyboardType="number-pad"
+              onChangeText={text => setMobileNo(text)}
             />
-            <TextInputField label="Email Id" placeholder="Enter your Email" />
+            <TextInputField
+              label="Email Id"
+              placeholder="Enter your Email"
+              onChangeText={text => setEmailId(text)}
+              keyboardType="email-address"
+            />
             <View
               style={{
                 flexDirection: 'row',
@@ -47,10 +84,19 @@ const UserInformationForm = () => {
                 width: '100%',
               }}>
               <View style={{width: '48%'}}>
-                <TextInputField label="Birth Date" placeholder="01/01/1998" />
+                <TextInputField
+                  label="Birth Date"
+                  placeholder="01/01/1998"
+                  onChangeText={text => setBirthDate(text)}
+                  autoComplete="birthdate-full"
+                />
               </View>
               <View style={{width: '48%'}}>
-                <TextInputField label="Gender" placeholder="Select" />
+                <TextInputField
+                  label="Gender"
+                  placeholder="Select"
+                  onChangeText={text => setGender(text)}
+                />
               </View>
             </View>
           </View>
@@ -65,7 +111,7 @@ const UserInformationForm = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.nextBtn}
-          onPress={() => navigation.navigate('UserInfoPersonal')}>
+          onPress={submitData}>
           <Text style={styles.nextBtnStyle}>Next</Text>
         </TouchableOpacity>
       </View>

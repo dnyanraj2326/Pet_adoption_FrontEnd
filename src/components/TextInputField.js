@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import { moderateScale } from 'react-native-size-matters'
 import Colors from '../constant/Colors'
 
-const TextInputField = ({label,placeholder,keyboardType}) => {
+const TextInputField = ({label,placeholder,keyboardType,onChangeText,autoComplete}) => {
     const [focus, setFocus] = useState(false)
     let customStyle  = focus ? styles.borderSTyle :styles.inputStyle
   return (
@@ -15,6 +15,8 @@ const TextInputField = ({label,placeholder,keyboardType}) => {
         placeholderTextColor={Colors.para}
         keyboardType={keyboardType}
         onFocus={() => setFocus(true)}
+        onChangeText={onChangeText}
+        autoComplete={autoComplete}
       />
     </View>
   )

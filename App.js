@@ -3,6 +3,7 @@ import React from 'react'
 import Colors from './src/constant/Colors'
 import { NavigationContainer } from '@react-navigation/native'
 import AppNavigation from './src/navigation/AppNavigation'
+import Toast from 'react-native-toast-message';
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <NavigationContainer>
           <AppNavigation />
       </NavigationContainer>
+      <Toast />
     </View>
   )
 }

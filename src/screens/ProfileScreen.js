@@ -8,10 +8,44 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '../constant/Colors';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation, StackActions} from '@react-navigation/native';
+import {moderateScale} from 'react-native-size-matters';
+import auth from '@react-native-firebase/auth';
+import {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const signOutUser = async () => {
+    try {
+      AsyncStorage.removeItem('userName');
+      AsyncStorage.removeItem('userEmail');
+      AsyncStorage.removeItem('userAddress');
+      AsyncStorage.removeItem('userPhone');
+      AsyncStorage.removeItem("token");
+      navigation.replace('Login');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const usrName = await AsyncStorage.getItem('userName');
+      const usrEmail = await AsyncStorage.getItem('userEmail');
+      const usrAddress = await AsyncStorage.getItem('userAddress');
+      const usrPhone = await AsyncStorage.getItem('userPhone');
+      setUserName(usrName);
+      setUserEmail(usrEmail);
+      setUserAddress(usrAddress);
+      setUserPhone(usrPhone);
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.profileSection}>
@@ -30,7 +64,6 @@ const ProfileScreen = () => {
               style={styles.backIcon}
             />
           </TouchableOpacity>
-          {/* <SettingProfile /> */}
         </View>
         <View
           style={{
@@ -71,7 +104,7 @@ const ProfileScreen = () => {
                 color: 'black',
                 textAlign: 'center',
               }}>
-              Mr.Mayur Patil
+              {userName}
             </Text>
           </View>
           <View style={{marginTop: 50}}>
@@ -84,10 +117,10 @@ const ProfileScreen = () => {
                 borderRadius: 7,
               }}>
               <View style={{paddingRight: 15}}>
-              <Image
-                source={require('../assets/icon/mobile.png')}
-                style={styles.mobileIcon}
-              />
+                <Image
+                  source={require('../assets/icon/mobile.png')}
+                  style={styles.mobileIcon}
+                />
               </View>
               <View>
                 <Text style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
@@ -100,7 +133,7 @@ const ProfileScreen = () => {
                     fontWeight: 'bold',
                     paddingTop: 7,
                   }}>
-                  + 9685741425
+                  + {userPhone}
                 </Text>
               </View>
             </View>
@@ -114,10 +147,10 @@ const ProfileScreen = () => {
                 marginTop: 30,
               }}>
               <View style={{paddingRight: 15}}>
-              <Image
-                source={require('../assets/icon/mail.png')}
-                style={styles.mailIcon}
-              />
+                <Image
+                  source={require('../assets/icon/mail.png')}
+                  style={styles.mailIcon}
+                />
               </View>
               <View>
                 <Text style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
@@ -130,16 +163,19 @@ const ProfileScreen = () => {
                     fontWeight: 'bold',
                     paddingTop: 7,
                   }}>
-                  uberfood45@gmail.com
+                  {userEmail}
                 </Text>
               </View>
             </View>
           </View>
 
-          {/* <View style={{marginTop: 120}}>
-          <Payment />
-          <Notification />
-        </View> */}
+          <View style={{marginTop: 120}}>
+            <TouchableOpacity
+              style={styles.logoutSection}
+              onPress={() => signOutUser()}>
+              <Text style={styles.logoutTextSty}>Logout</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -175,22 +211,34 @@ const styles = StyleSheet.create({
     top: -70,
     left: '68%',
   },
-  mailIcon:{
-    width:25,
-    height:25,
-    tintColor:Colors.black
+  mailIcon: {
+    width: 25,
+    height: 25,
+    tintColor: Colors.black,
   },
-  mobileIcon:{
-    width:27,
-    height:27,
-    tintColor:Colors.black
+  mobileIcon: {
+    width: 27,
+    height: 27,
+    tintColor: Colors.black,
   },
-  profileImg:{
+  profileImg: {
     width: 130,
     height: 130,
     borderRadius: 40,
     position: 'absolute',
     top: -85,
     left: '29%',
-  }
+  },
+  logoutSection: {
+    paddingHorizontal: moderateScale(20),
+    paddingVertical: moderateScale(12),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: 20,
+  },
+  logoutTextSty: {
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+  },
 });

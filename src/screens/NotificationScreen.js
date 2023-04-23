@@ -44,12 +44,12 @@ const NotificationScreen = () => {
                   added
                 </Text>
                 <Text style={styles.card_bottom_text}>
-                  032 - Collections Pet's - 2 h ago
+                  042 - Collections Pet's - 2 h ago
                 </Text>
               </View>
             </View>
             <Image
-              source={petsaddo}
+              source={{uri:'https://images.unsplash.com/photo-1507813686138-954c2c879e8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGRvZyUyMGltYWdlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'}}
               style={{width: 65, height: 65, borderRadius: 10}}
             />
           </TouchableOpacity>
@@ -65,7 +65,7 @@ const NotificationScreen = () => {
             <View style={styles.left_card_section}>
               <Image source={redDot} style={{width: 12, height: 12}} />
               <Image
-                source={profile}
+                source={{uri:'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'}}
                 style={{
                   width: 47,
                   height: 47,
@@ -75,16 +75,16 @@ const NotificationScreen = () => {
               />
               <View style={{marginLeft: moderateScale(8)}}>
                 <Text style={styles.card_top_text}>
-                  <Text style={styles.owner_name}>Vinod Korale </Text>New pets
+                  <Text style={styles.owner_name}>Karma Foundation </Text>New pets
                   added
                 </Text>
                 <Text style={styles.card_bottom_text}>
-                  032 - Collections Pet's - 2 h ago
+                  027 - Collections Pet's - 3 h ago
                 </Text>
               </View>
             </View>
             <Image
-              source={petsaddo}
+              source={{uri:'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'}}
               style={{width: 65, height: 65, borderRadius: 10}}
             />
           </TouchableOpacity>
@@ -103,7 +103,7 @@ const NotificationScreen = () => {
             <View style={styles.left_card_section}>
               <Image source={redDot} style={{width: 12, height: 12}} />
               <Image
-                source={profile}
+                source={{uri:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'}}
                 style={{
                   width: 47,
                   height: 47,
@@ -113,16 +113,16 @@ const NotificationScreen = () => {
               />
               <View style={{marginLeft: moderateScale(8)}}>
                 <Text style={styles.card_top_text}>
-                  <Text style={styles.owner_name}>Vinod Korale </Text>New pets
+                  <Text style={styles.owner_name}>Vrundavan </Text>New pets
                   added
                 </Text>
                 <Text style={styles.card_bottom_text}>
-                  032 - Collections Pet's - 2 h ago
+                  032 - Collections Pet's - 10 h ago
                 </Text>
               </View>
             </View>
             <Image
-              source={petsaddo}
+              source={{uri:'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'}}
               style={{width: 65, height: 65, borderRadius: 10}}
             />
           </View>
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.bg,
-    paddingHorizontal: moderateScale(20),
+    paddingHorizontal: moderateScale(15),
   },
   subTextSty: {
     color: Colors.black,

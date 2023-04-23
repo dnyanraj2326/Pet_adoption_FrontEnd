@@ -10,8 +10,19 @@ const NewPets = [
       id: 1,
       petName: "Tommy",
       age: "2 years old",
-      distance: "2.5",
+      distance: "2.5 Km",
       gender: "Male",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vishal',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:
         ["https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHBldHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",]
     },
@@ -19,8 +30,19 @@ const NewPets = [
       id: 2,
       petName: "Chagu",
       age: "1.2 years old",
-      distance: "2.2",
+      distance: "2.2 Km",
       gender: "Female",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vishal',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:
         ["https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",]
     },
@@ -28,8 +50,19 @@ const NewPets = [
       id: 3,
       petName: "Moti",
       age: "1 years old",
-      distance: "2",
+      distance: "2 Km",
       gender: "Male",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vishal',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:
         ["https://images.unsplash.com/photo-1629740067905-bd3f515aa739?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHBldHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",]
     },
@@ -38,8 +71,19 @@ const NewPets = [
       id: 4,
       petName: "Moni",
       age: "2.5 years old",
-      distance: "3",
+      distance: "3 Km",
       gender: "Female",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vishal',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:
         ["https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1988&q=80",]
     },
@@ -47,17 +91,39 @@ const NewPets = [
       id: 5,
       petName: "Sunny",
       age: "2.2 years old",
-      distance: "3.4",
+      distance: "3.4 Km",
       gender: "Female",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vishal',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:
         ["https://images.unsplash.com/photo-1593768697824-f31b967e6c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGNvd3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",]
     },
     {
       id: 6,
       petName: "Rubbi",
-      age: "1 years old",
-      distance: "1",
+      age: "2 years old",
+      distance: "1 Km",
       gender: "Female",
+      category: 'Cow',
+      about:
+        'A dog is a domestic mammal of the family Canidae and the order Carnivora. Its scientific name is Canis lupus familiaris. Dogs are a subspecies of the gray wolf, and they are also related to foxes and jackals. Dogs are one of the two most ubiquitous and most popular domestic animals in the world.',
+      address: 'Baner,pune',
+      breed: 'heifer',
+      ownDetails: {
+        ownName: 'Vijay Singh',
+        ownNgoname: 'Jeevraksha Animal',
+        ownImg: 'https://www.w3schools.com/w3images/avatar2.png',
+        ownNum: '6585258875',
+      },
       petUrl:[
         "https://images.unsplash.com/photo-1604165094771-7af34f7fd4cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fGRvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=2000&q=60",
         "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGRvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
@@ -69,7 +135,6 @@ const NewPets = [
         "https://images.unsplash.com/photo-1477936432016-8172ed08637e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjZ8fGRvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=2000&q=60",
         "https://images.unsplash.com/photo-1587764379873-97837921fd44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODB8fGRvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=2000&q=60",
         "https://images.unsplash.com/photo-1568393691080-d016376b767d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTI0fHxkb2d8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60"
-
       ]
         
     },
@@ -82,11 +147,16 @@ const HomeCard = () => {
       {
         NewPets?.map((item,ind) => (
             <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen",{
-                petUrl:item.petUrl,
-                petName:item.petName,
-                petAge:item.age,
-                gender:item.gender,
-                distance:item.distance
+              petUrl: item.petUrl,
+              petName: item.petName,
+              petAge: item.age,
+              gender: item.gender,
+              distance: item.distance,
+              ownDetails:item.ownDetails,
+              about:item.about,
+              breed:item.breed,
+              address:item.address,
+              item:item
             })} key={ind} activeOpacity={0.8} style={styles.cardSection}>
         <View style={styles.imgContainer}>
         <Image source={{uri:item.petUrl[0]}} style={styles.petsImg} />
@@ -105,7 +175,7 @@ const HomeCard = () => {
                 <Text style={styles.locationName}>Distance: </Text>
                 </View>
                 <View>
-                <Text style={styles.locationValue}>{item.distance} km</Text>
+                <Text style={styles.locationValue}>{item.distance}</Text>
                 </View>
             </View>
         </View>
